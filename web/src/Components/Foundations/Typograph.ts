@@ -8,6 +8,10 @@ export const DefaultBoldWhiteFont = styled.span`
   color: #fff;
 `;
 
+export const DefaultBoldBlackFont = styled(DefaultBoldWhiteFont)`
+  color: #000;
+`;
+
 export const DefaultRegularBlackFont = styled.p`
   font-family: "Roboto", sans-serif;
 

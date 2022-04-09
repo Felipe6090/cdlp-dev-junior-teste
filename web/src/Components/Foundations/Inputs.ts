@@ -159,7 +159,7 @@ export const TitleInput = styled.input`
 
   color: #ccc;
 
-  padding: 10px 15px;
+  padding: 0 15px;
 
   &::placeholder {
     font-family: "Roboto", sans-serif;

@@ -10,6 +10,8 @@ export const MainDiv = styled.div`
 export const PostDiv = styled.div`
   display: flex;
   flex-direction: column;
+
+  padding: 0 0 30px 0;
   gap: 20px;
 
   border: 1px solid #999;
