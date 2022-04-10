@@ -1,4 +1,5 @@
 import { useState, createContext, Dispatch } from "react";
+import { IPosts } from "../../types/PostsTypes";
 
 type IProviderTypes = {
   children: JSX.Element | JSX.Element[];
@@ -8,15 +9,6 @@ type IProviderTypes = {
 type AuthContextType = {
   postsListData: IPosts[];
   setPostsListData: Dispatch<any>;
-};
-
-type IPosts = {
-  id: string;
-  username: string;
-  userId?: string;
-  created_datetime: Date;
-  title: string;
-  content: string;
 };
 
 const PostsListContext = createContext({} as AuthContextType);

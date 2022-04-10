@@ -77,7 +77,7 @@ export const LoginButton = styled.button`
   }
 `;
 
-export const CreateButton = styled.button`
+export const BlackButton = styled.button`
   width: ${(props: StyledProps) =>
     props.size == "large"
       ? "289px"
@@ -100,8 +100,7 @@ export const CreateButton = styled.button`
       ? "29px"
       : ""};
 
-  background-color: ${(props: StyledProps) =>
-    props.authorized ? "#000" : "#777"};
+  background-color: #000;
 
   border: none;
   outline: none;
@@ -149,6 +148,10 @@ export const CreateButton = styled.button`
   }
 
   margin-left: auto;
+`;
+export const CreateButton = styled(BlackButton)`
+  background-color: ${(props: StyledProps) =>
+    props.authorized ? "#000" : "#777"};
 `;
 
 export const TitleInput = styled.input`

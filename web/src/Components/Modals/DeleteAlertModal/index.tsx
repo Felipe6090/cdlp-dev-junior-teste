@@ -2,19 +2,12 @@ import * as S from "./styles";
 
 import DeleteAlertModalComponent from "./childrens/DeleteAlertModalComponent";
 
+import { IPosts } from "../../../types/PostsTypes";
+
 type IType = {
   isOpen: boolean;
   onClose: () => void;
   currentPost: IPosts;
-};
-
-type IPosts = {
-  id: string;
-  username: string;
-  userId?: string;
-  created_datetime: Date;
-  title: string;
-  content: string;
 };
 
 export default function DeleteAlertModal({

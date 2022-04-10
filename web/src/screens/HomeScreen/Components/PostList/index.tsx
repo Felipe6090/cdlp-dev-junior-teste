@@ -10,15 +10,7 @@ import * as T from "../../../../Components/Foundations/Typograph";
 
 import { PostsListContext } from "../../../../contexts/PostsListContext";
 import { AuthContext } from "../../../../contexts/AuthContext";
-
-type IPosts = {
-  id: string;
-  username: string;
-  userId?: string;
-  created_datetime: Date;
-  title: string;
-  content: string;
-};
+import { IPosts } from "../../../../types/PostsTypes";
 
 export default function PostList() {
   const { postsListData } = useContext(PostsListContext);

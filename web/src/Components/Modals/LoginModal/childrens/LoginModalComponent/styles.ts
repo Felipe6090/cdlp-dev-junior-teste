@@ -12,3 +12,10 @@ export const MainDiv = styled.div`
 
   gap: 25px;
 `;
+
+export const InputDiv = styled.div`
+  display: flex;
+  flex-direction: column;
+
+  gap: 5px;
+`;

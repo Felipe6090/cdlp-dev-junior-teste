@@ -4,9 +4,9 @@ import * as T from "../Foundations/Typograph";
 export default function Footer() {
   return (
     <S.MainDiv>
-      <T.TimeStamp>Desenvolvido por Felipe Vieira</T.TimeStamp>
+      <T.GreyLink href="https://github.com/Felipe6090">Deveped by Felipe Vieira</T.GreyLink>
 
-      <T.TimeStamp>0.1@04.10.2022</T.TimeStamp>
+      <T.GreyLink href="https://github.com/Felipe6090/cdlp-dev-junior-teste">0.1@04.10.2022</T.GreyLink>
     </S.MainDiv>
   );
 }

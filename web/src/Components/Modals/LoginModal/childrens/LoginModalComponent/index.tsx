@@ -54,35 +54,39 @@ export default function LoginModalComponent({ onClose }: IType) {
         Welcome to CodeLeap network!
       </T.DefaultBoldBlackFont>
 
-      <T.InputTitle>Please enter your username</T.InputTitle>
+      <S.InputDiv>
+        <T.InputTitle>Please enter your username</T.InputTitle>
 
-      <I.TitleInput
-        placeholder="Jhon Doe"
-        value={loginFilds.username}
-        onChange={(e) => {
-          setLoginFilds({
-            ...loginFilds,
-            username: e.target.value,
-          });
-        }}
-      />
+        <I.TitleInput
+          placeholder="Jhon Doe"
+          value={loginFilds.username}
+          onChange={(e) => {
+            setLoginFilds({
+              ...loginFilds,
+              username: e.target.value,
+            });
+          }}
+        />
+      </S.InputDiv>
 
-      <T.InputTitle>your password</T.InputTitle>
+      <S.InputDiv>
+        <T.InputTitle>your password</T.InputTitle>
 
-      <I.TitleInput
-        placeholder="Password"
-        value={loginFilds.password}
-        onChange={(e) => {
-          setLoginFilds({
-            ...loginFilds,
-            password: e.target.value,
-          });
-        }}
-      />
+        <I.TitleInput
+          placeholder="Password"
+          value={loginFilds.password}
+          onChange={(e) => {
+            setLoginFilds({
+              ...loginFilds,
+              password: e.target.value,
+            });
+          }}
+        />
+      </S.InputDiv>
 
-      <I.CreateButton size="medium" onClick={() => loginHandler()}>
+      <I.BlackButton size="medium" onClick={() => loginHandler()}>
         ENTER
-      </I.CreateButton>
+      </I.BlackButton>
     </S.MainDiv>
   );
 }

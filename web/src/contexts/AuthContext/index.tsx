@@ -1,20 +1,5 @@
 import { useState, createContext, Dispatch } from "react";
-
-type IPosts = {
-  id: string;
-  created_datetime: number;
-  userId: string;
-  title: string;
-  content: string;
-};
-
-type IUserData = {
-  id: string;
-  created_datetime: number;
-  username: string;
-  password: string;
-  posts: IPosts[];
-};
+import { IUserData } from "../../types/UserDataType";
 
 type IProviderTypes = {
   children: JSX.Element | JSX.Element[];

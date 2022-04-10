@@ -4,20 +4,13 @@ import * as I from "../../../../Foundations/Inputs";
 import { useContext, useState } from "react";
 import { PostsListContext } from "../../../../../contexts/PostsListContext";
 import { defaultApi } from "../../../../../services/api";
+import { IPosts } from "../../../../../types/PostsTypes";
 
 type IType = {
   onClose: () => void;
   currentPost: IPosts;
 };
 
-type IPosts = {
-  id: string;
-  username: string;
-  userId?: string;
-  created_datetime: Date;
-  title: string;
-  content: string;
-};
 
 export default function EditModalComponent({ onClose, currentPost }: IType) {
   const [inputsFilds, setInputsFilds] = useState({
@@ -31,10 +24,7 @@ export default function EditModalComponent({ onClose, currentPost }: IType) {
     const index = postsListData.indexOf(currentPost);
 
     postsListData[index] = {
-      id: postsListData[index].id,
-      username: postsListData[index].username,
-      userId: postsListData[index].userId,
-      created_datetime: postsListData[index].created_datetime,
+      ...postsListData[index],
       title: inputsFilds.title,
       content: inputsFilds.content,
     };
@@ -77,9 +67,9 @@ export default function EditModalComponent({ onClose, currentPost }: IType) {
         />
       </S.InputDiv>
 
-      <I.CreateButton size="medium" onClick={() => editHandler()}>
+      <I.BlackButton size="medium" onClick={() => editHandler()}>
         SAVE
-      </I.CreateButton>
+      </I.BlackButton>
     </S.MainDiv>
   );
 }

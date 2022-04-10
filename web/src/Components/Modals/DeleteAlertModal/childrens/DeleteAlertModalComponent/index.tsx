@@ -5,15 +5,7 @@ import { defaultApi } from "../../../../../services/api";
 import router from "next/router";
 import { useContext } from "react";
 import { PostsListContext } from "../../../../../contexts/PostsListContext";
-
-type IPosts = {
-  id: string;
-  username: string;
-  userId?: string;
-  created_datetime: Date;
-  title: string;
-  content: string;
-};
+import { IPosts } from "../../../../../types/PostsTypes";
 
 type IType = {
   onClose: () => void;
