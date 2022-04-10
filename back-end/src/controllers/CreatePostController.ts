@@ -3,6 +3,7 @@ import CreatePostService from "../services/CreatePostService";
 
 type IPost = {
   id: string;
+  username: string;
   userId: string;
   title: string;
   content: string;

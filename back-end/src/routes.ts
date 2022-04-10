@@ -42,7 +42,7 @@ routes.get("/getUserData/:tokenId", getUserDataController.handle);
 
 routes.post("/createPost", createPostController.handle);
 
-routes.patch("/updatePost/:postID", updatePostController.handle);
+routes.patch("/updatePost", updatePostController.handle);
 
 routes.delete("/deletePost/:postID", deletePostController.handle);
 

@@ -45,33 +45,34 @@ export default function PostList() {
             <S.PostHead>
               <T.DefaultBoldWhiteFont>{post.title}</T.DefaultBoldWhiteFont>
 
-              {post.userId === authData?.id && (
-                <S.IconsDiv>
-                  <Image
-                    src="/deleteIcon.png"
-                    layout="fixed"
-                    height={22.5}
-                    width={17.5}
-                    onClick={() => {
-                      setCurrentPostData(post);
-                      setDeleteModalHandler(!deleteModalHandler);
-                    }}
-                    style={{ cursor: "pointer" }}
-                  />
+              {post.userId === authData?.id &&
+                post.username === authData?.username && (
+                  <S.IconsDiv>
+                    <Image
+                      src="/deleteIcon.png"
+                      layout="fixed"
+                      height={22.5}
+                      width={17.5}
+                      onClick={() => {
+                        setCurrentPostData(post);
+                        setDeleteModalHandler(!deleteModalHandler);
+                      }}
+                      style={{ cursor: "pointer" }}
+                    />
 
-                  <Image
-                    src="/editIcon.png"
-                    layout="fixed"
-                    height={30}
-                    width={30}
-                    onClick={() => {
-                      setCurrentPostData(post);
-                      setEditModalHandler(!editModalHandler);
-                    }}
-                    style={{ cursor: "pointer" }}
-                  />
-                </S.IconsDiv>
-              )}
+                    <Image
+                      src="/editIcon.png"
+                      layout="fixed"
+                      height={30}
+                      width={30}
+                      onClick={() => {
+                        setCurrentPostData(post);
+                        setEditModalHandler(!editModalHandler);
+                      }}
+                      style={{ cursor: "pointer" }}
+                    />
+                  </S.IconsDiv>
+                )}
             </S.PostHead>
 
             <S.PostInfosRow>

@@ -1,0 +1,14 @@
+FROM node:latest as packages
+WORKDIR /packages
+COPY package.json .
+RUN npm install
+
+FROM node:latest
+WORKDIR /main/back-end
+COPY . .
+COPY --from=packages /packages/node_modules node_modules
+ARG DATABASE_URL="mysql://root:root@localhost:3306/mydb?schema=public"
+RUN ["npx", "prisma", "generate"]
+RUN ["npx", "prisma", "migrate", "deploy"]
+ENTRYPOINT [ "npm", "run", "dev"]  
+EXPOSE 4000

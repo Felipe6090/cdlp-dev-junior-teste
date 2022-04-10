@@ -3,6 +3,7 @@ import * as T from "../../../../Foundations/Typograph";
 import * as I from "../../../../Foundations/Inputs";
 import { useContext, useState } from "react";
 import { PostsListContext } from "../../../../../contexts/PostsListContext";
+import { api } from "../../../../../services/api";
 
 type IType = {
   onClose: () => void;
@@ -32,10 +33,18 @@ export default function EditModalComponent({ onClose, currentPost }: IType) {
     postsListData[index] = {
       id: postsListData[index].id,
       username: postsListData[index].username,
+      userId: postsListData[index].userId,
       created_datetime: postsListData[index].created_datetime,
       title: inputsFilds.title,
       content: inputsFilds.content,
     };
+
+    const reqBody = {
+      postID: currentPost.id,
+      ...inputsFilds,
+    };
+
+    await api.patch("/updatePost", reqBody);
 
     return onClose();
   }
