@@ -1,4 +1,3 @@
-import Link from "next/link";
 import styled from "styled-components";
 
 export const DefaultBoldWhiteFont = styled.span`
@@ -64,7 +63,7 @@ export const TimeStamp = styled.span`
   color: #777;
 `;
 
-export const GreyLink = styled(Link)`
+export const GreyLink = styled.a`
   font-family: "Roboto", sans-serif;
 
   font-size: 18px;

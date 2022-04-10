@@ -33,11 +33,7 @@ export default function FormComponent() {
 
     const result = response.data;
 
-    console.log(result);
-
-    setPostsListData([result, ...postsListData]);
-
-    return router.replace("/");
+    return setPostsListData([result, ...postsListData]);
   }
 
   return (

@@ -27,9 +27,7 @@ export default function DeleteAlertModalComponent({
 
     setPostsListData(resultArray);
 
-    onClose();
-
-    return router.replace("/");
+    return onClose();
   }
 
   return (

@@ -41,11 +41,9 @@ export default function LoginModalComponent({ onClose }: IType) {
       maxAge: 60 * 60 * 1,
     });
 
-    onClose();
-
     setAuthData(data.userData);
 
-    return router.replace("/");
+    return onClose();
   }
 
   return (
