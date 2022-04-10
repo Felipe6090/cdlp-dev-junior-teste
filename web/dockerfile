@@ -7,6 +7,6 @@ FROM node:latest
 WORKDIR /main/web
 COPY . .
 COPY --from=packages /packages/node_modules node_modules
-RUN ["npm", "run", "build"]
-ENTRYPOINT ["npm", "run", "start"]  
+RUN ["chmod", "+x", "./docker-entrypoints.sh"]
+ENTRYPOINT ["./docker-entrypoints.sh"] 
 EXPOSE 3000

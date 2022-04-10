@@ -1,7 +1,7 @@
 import * as S from "./styles";
 import * as T from "../../../../Foundations/Typograph";
 import * as I from "../../../../Foundations/Inputs";
-import { api } from "../../../../../services/api";
+import { defaultApi } from "../../../../../services/api";
 import router from "next/router";
 import { useContext } from "react";
 import { PostsListContext } from "../../../../../contexts/PostsListContext";
@@ -27,7 +27,7 @@ export default function DeleteAlertModalComponent({
   const { postsListData, setPostsListData } = useContext(PostsListContext);
 
   async function deleteHandler() {
-    await api.delete(`/deletePost/${currentPost.id}`);
+    await defaultApi.delete(`/deletePost/${currentPost.id}`);
 
     const resultArray = postsListData.filter(
       (post: IPosts) => post.id !== currentPost.id

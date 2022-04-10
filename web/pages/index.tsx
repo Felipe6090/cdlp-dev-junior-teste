@@ -5,7 +5,7 @@ import HomeScreen from "../src/screens/HomeScreen";
 import { GetServerSideProps } from "next";
 
 import nookies from "nookies";
-import { api } from "../src/services/api";
+import { InitialApi } from "../src/services/api";
 import { useContext, useEffect } from "react";
 import { AuthContext } from "../src/contexts/AuthContext";
 
@@ -18,7 +18,7 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
     };
   }
 
-  const userDataHandler = await api.get(`/getUserData/${tokenId}`);
+  const userDataHandler = await InitialApi.get(`/getUserData/${tokenId}`);
 
   const userData = userDataHandler.data;
 

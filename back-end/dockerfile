@@ -8,7 +8,6 @@ WORKDIR /main/back-end
 COPY . .
 COPY --from=packages /packages/node_modules node_modules
 ARG DATABASE_URL="mysql://root:root@localhost:3306/mydb?schema=public"
-RUN ["npx", "prisma", "generate"]
-RUN ["npx", "prisma", "migrate", "deploy"]
-ENTRYPOINT [ "npm", "run", "dev"]  
+RUN ["chmod", "+x", "./docker-entrypoints.sh"]
+ENTRYPOINT ["./docker-entrypoints.sh"]  
 EXPOSE 4000

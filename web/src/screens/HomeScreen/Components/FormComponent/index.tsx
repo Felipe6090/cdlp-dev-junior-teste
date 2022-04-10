@@ -9,7 +9,7 @@ import { useContext, useState } from "react";
 import { AuthContext } from "../../../../contexts/AuthContext";
 import { PostsListContext } from "../../../../contexts/PostsListContext";
 
-import { api } from "../../../../services/api";
+import { defaultApi } from "../../../../services/api";
 
 export default function FormComponent() {
   const { authData } = useContext(AuthContext);
@@ -25,7 +25,7 @@ export default function FormComponent() {
     if (!authData || inputsFilds.title === "" || inputsFilds.content === "")
       return;
 
-    const response = await api.post("/createPost", {
+    const response = await defaultApi.post("/createPost", {
       userId: authData.id,
       ...inputsFilds,
       username: authData.username,

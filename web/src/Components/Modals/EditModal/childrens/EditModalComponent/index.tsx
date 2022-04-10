@@ -3,7 +3,7 @@ import * as T from "../../../../Foundations/Typograph";
 import * as I from "../../../../Foundations/Inputs";
 import { useContext, useState } from "react";
 import { PostsListContext } from "../../../../../contexts/PostsListContext";
-import { api } from "../../../../../services/api";
+import { defaultApi } from "../../../../../services/api";
 
 type IType = {
   onClose: () => void;
@@ -44,7 +44,7 @@ export default function EditModalComponent({ onClose, currentPost }: IType) {
       ...inputsFilds,
     };
 
-    await api.patch("/updatePost", reqBody);
+    await defaultApi.patch("/updatePost", reqBody);
 
     return onClose();
   }

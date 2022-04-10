@@ -8,8 +8,7 @@ services:
     image: felipe6090/cdlp-web
     ports:
       - "3000:3000"
-    networks:
-      - production-network
+    command: sh -c '../wait-for.sh cdlp-back-end:4000 -- echo "succes back-end process"'
     depends_on:
       - "back-end"
     container_name: cdlp-web
@@ -23,28 +22,20 @@ services:
     image: felipe6090/cdlp-back-end
     ports:
       - "4000:4000"
-    networks:
-      - production-network
+    command: sh -c '../wait-for.sh cdlp-mysql:4000 -- echo "succes back-end process"'
     depends_on:
       - "mysql"
     container_name: cdlp-back-end
 
   mysql:
     image: mysql:5.7
-    restart: always
     volumes:
       - data-volume:/var/lib/mysql
     environment:
       MYSQL_ROOT_PASSWORD: root
     ports:
       - "3306:3306"
-    networks:
-      - production-network
     container_name: cdlp-mysql
-
-networks:
-  production-network:
-    driver: bridge
 
 volumes:
   data-volume:

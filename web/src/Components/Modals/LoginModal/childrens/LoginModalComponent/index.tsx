@@ -4,7 +4,7 @@ import * as I from "../../../../Foundations/Inputs";
 
 import { useState, useContext } from "react";
 
-import { api } from "../../../../../services/api";
+import { defaultApi } from "../../../../../services/api";
 
 import router from "next/router";
 
@@ -29,7 +29,7 @@ export default function LoginModalComponent({ onClose }: IType) {
       return;
     }
 
-    const result = await api.post("/login", loginFilds);
+    const result = await defaultApi.post("/login", loginFilds);
 
     const data = result.data;
 

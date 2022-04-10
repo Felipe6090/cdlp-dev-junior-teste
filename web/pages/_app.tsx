@@ -14,7 +14,7 @@ import { AuthProvider } from "../src/contexts/AuthContext";
 
 import nookies from "nookies";
 
-import { api } from "../src/services/api";
+import { InitialApi } from "../src/services/api";
 import { PostsListProvider } from "../src/contexts/PostsListContext";
 
 type Props = {
@@ -24,7 +24,7 @@ type Props = {
 
 class MyApp extends App<Props> {
   static async getInitialProps({ Component, ctx }: AppContext) {
-    const postsResponse = await api.get("/getPosts");
+    const postsResponse = await InitialApi.get("/getPosts");
 
     const postsData = postsResponse.data;
 
@@ -40,7 +40,7 @@ class MyApp extends App<Props> {
       };
     }
 
-    const userDataHandler = await api.get(`/getUserData/${tokenId}`);
+    const userDataHandler = await InitialApi.get(`/getUserData/${tokenId}`);
 
     const { userData } = await userDataHandler.data;
 
