@@ -1,9 +1,13 @@
 import * as S from "./styles";
 import * as T from "../../../../Foundations/Typograph";
 import * as I from "../../../../Foundations/Inputs";
+
 import { useContext, useState } from "react";
+
 import { PostsListContext } from "../../../../../contexts/PostsListContext";
+
 import { defaultApi } from "../../../../../services/api";
+
 import { IPosts } from "../../../../../types/PostsTypes";
 
 type IType = {
@@ -11,11 +15,10 @@ type IType = {
   currentPost: IPosts;
 };
 
-
 export default function EditModalComponent({ onClose, currentPost }: IType) {
   const [inputsFilds, setInputsFilds] = useState({
-    title: "",
-    content: "",
+    title: currentPost.title,
+    content: currentPost.content,
   });
 
   const { postsListData } = useContext(PostsListContext);
