@@ -20,7 +20,7 @@ export default async function loginHandler({ password, userData }: ILogin) {
 
   const generateToken = new GenerateToken();
 
-  const token = await generateToken.execute(userId);
+  await generateToken.execute(userId);
 
   const generateRefreshToken = new GenerateRefreshToken();
 

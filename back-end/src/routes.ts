@@ -36,15 +36,15 @@ const routes = Router();
 
 routes.post("/login", loginController.login);
 
-routes.post("/refreshToken", refreshTokenController.handle);
+routes.patch("/refreshToken/:tokenId", refreshTokenController.handle);
 
-routes.post("/getUserData", getUserDataController.handle);
+routes.get("/getUserData/:tokenId", getUserDataController.handle);
 
 routes.post("/createPost", createPostController.handle);
 
-routes.patch("/updatePost", updatePostController.handle);
+routes.patch("/updatePost/:postID", updatePostController.handle);
 
-routes.delete("/deletePost", deletePostController.handle);
+routes.delete("/deletePost/:postID", deletePostController.handle);
 
 routes.get("/getPosts", getPostsController.handle);
 

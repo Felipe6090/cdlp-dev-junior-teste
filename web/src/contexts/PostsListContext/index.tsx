@@ -7,7 +7,6 @@ type IProviderTypes = {
 
 type AuthContextType = {
   postsListData: IPosts[];
-
   setPostsListData: Dispatch<any>;
 };
 

@@ -1,13 +1,13 @@
 import { Request, Response } from "express";
-import UpdatePostService from "../services/UpdatePostService";
+import DeletePostService from "../services/DeletePostService";
 
 export default class DeletePostController {
   async handle(req: Request, res: Response) {
-    const { postId } = req.body;
+    const postID = req.params?.postID;
 
-    const service = new UpdatePostService();
+    const service = new DeletePostService();
 
-    const result = await service.execute(postId);
+    const result = await service.execute(postID);
 
     return res.json(result);
   }

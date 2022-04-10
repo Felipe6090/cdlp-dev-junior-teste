@@ -3,11 +3,11 @@ import GetUserDataService from "../services/GetUserDataService";
 
 export default class GetUserDataController {
   async handle(req: Request, res: Response) {
-    const { id } = req.body;
+    const tokenId = req.params.userId;
 
     const service = new GetUserDataService();
 
-    const result = await service.execute(id);
+    const result = await service.execute(tokenId);
 
     return res.json(result);
   }

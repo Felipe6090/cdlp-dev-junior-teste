@@ -13,6 +13,7 @@ CREATE TABLE `posts` (
     `id` VARCHAR(191) NOT NULL,
     `created_datetime` DATETIME(3) NOT NULL DEFAULT CURRENT_TIMESTAMP(3),
     `userId` VARCHAR(191) NOT NULL,
+    `username` VARCHAR(191) NOT NULL,
     `title` VARCHAR(191) NOT NULL,
     `content` VARCHAR(191) NOT NULL,
 

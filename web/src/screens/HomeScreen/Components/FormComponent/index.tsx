@@ -28,9 +28,12 @@ export default function FormComponent() {
     const response = await api.post("/createPost", {
       userId: authData.id,
       ...inputsFilds,
+      username: authData.username,
     });
 
     const result = response.data;
+
+    console.log(result);
 
     setPostsListData([result, ...postsListData]);
 

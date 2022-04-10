@@ -11,6 +11,15 @@ import * as T from "../../../../Components/Foundations/Typograph";
 import { PostsListContext } from "../../../../contexts/PostsListContext";
 import { AuthContext } from "../../../../contexts/AuthContext";
 
+type IPosts = {
+  id: string;
+  username: string;
+  userId?: string;
+  created_datetime: Date;
+  title: string;
+  content: string;
+};
+
 export default function PostList() {
   const { postsListData } = useContext(PostsListContext);
 
@@ -20,45 +29,54 @@ export default function PostList() {
 
   const [editModalHandler, setEditModalHandler] = useState(false);
 
-  function helper(a: any, b: any) {
+  const [currentPostData, setCurrentPostData] = useState({} as IPosts);
+
+  function helperFunction(a: any, b: any) {
     return b.created_datetime - a.created_datetime;
   }
 
+  const helper = postsListData.sort(helperFunction);
+
   return (
     <S.MainDiv>
-      {postsListData.sort(helper).map((post) => {
+      {helper.map((post) => {
         return (
           <S.PostDiv key={post.id}>
             <S.PostHead>
               <T.DefaultBoldWhiteFont>{post.title}</T.DefaultBoldWhiteFont>
 
-              {post.userId === authData?.id ||
-                (post.username === authData?.username && (
-                  <S.IconsDiv>
-                    <Image
-                      src="/deleteIcon.png"
-                      layout="fixed"
-                      height={22.5}
-                      width={17.5}
-                      onClick={() => setDeleteModalHandler(!deleteModalHandler)}
-                      style={{ cursor: "pointer" }}
-                    />
+              {post.userId === authData?.id && (
+                <S.IconsDiv>
+                  <Image
+                    src="/deleteIcon.png"
+                    layout="fixed"
+                    height={22.5}
+                    width={17.5}
+                    onClick={() => {
+                      setCurrentPostData(post);
+                      setDeleteModalHandler(!deleteModalHandler);
+                    }}
+                    style={{ cursor: "pointer" }}
+                  />
 
-                    <Image
-                      src="/editIcon.png"
-                      layout="fixed"
-                      height={30}
-                      width={30}
-                      onClick={() => setEditModalHandler(!editModalHandler)}
-                      style={{ cursor: "pointer" }}
-                    />
-                  </S.IconsDiv>
-                ))}
+                  <Image
+                    src="/editIcon.png"
+                    layout="fixed"
+                    height={30}
+                    width={30}
+                    onClick={() => {
+                      setCurrentPostData(post);
+                      setEditModalHandler(!editModalHandler);
+                    }}
+                    style={{ cursor: "pointer" }}
+                  />
+                </S.IconsDiv>
+              )}
             </S.PostHead>
 
             <S.PostInfosRow>
               <T.DefaultNameTypography>
-                @{post.username}
+                {"@" + post.username}
               </T.DefaultNameTypography>
 
               <T.TimeStamp>
@@ -76,6 +94,7 @@ export default function PostList() {
         onClose={() => {
           setEditModalHandler(!editModalHandler);
         }}
+        currentPost={currentPostData}
       />
 
       <DeleteAlertModal
@@ -83,6 +102,7 @@ export default function PostList() {
         onClose={() => {
           setDeleteModalHandler(!deleteModalHandler);
         }}
+        currentPost={currentPostData}
       />
     </S.MainDiv>
   );

@@ -28,21 +28,21 @@ class MyApp extends App<Props> {
 
     const postsData = postsResponse.data;
 
-    const { auth_token: id } = nookies.get(ctx);
+    const { auth_token: tokenId } = nookies.get(ctx);
 
-    if (!id) {
+    if (!tokenId) {
       return {
         pageProps: Component.getInitialProps
           ? await Component.getInitialProps(ctx)
           : {},
         postsData,
-        userData: undefined,
+        userData: null,
       };
     }
 
-    const userDataHandler = await api.post("/getUserData", { id });
+    const userDataHandler = await api.get(`/getUserData/${tokenId}`);
 
-    const userData = await userDataHandler.data;
+    const { userData } = await userDataHandler.data;
 
     return {
       pageProps: Component.getInitialProps

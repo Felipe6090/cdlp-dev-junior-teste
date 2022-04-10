@@ -23,6 +23,7 @@ model Posts {
   created_datetime DateTime @default(now())
   User             User     @relation(fields: [userId], references: [id])
   userId           String
+  username         String
   title            String
   content          String
 

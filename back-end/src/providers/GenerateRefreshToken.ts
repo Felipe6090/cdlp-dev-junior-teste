@@ -7,7 +7,7 @@ export default class GenerateRefreshToken {
     if (!userId) {
       throw new Error("Missing Token");
     }
-    
+
     const tokenCheck = await prismaClient.refreshToken.findFirst({
       where: {
         userId,
@@ -22,7 +22,9 @@ export default class GenerateRefreshToken {
       });
     }
 
-    const expiresIn = dayjs().add(15, "minute").unix();
+    const expiresIn = dayjs()
+      .add(60 * 24 * 1, "minute")
+      .unix();
 
     const generateRefreshToken = await prismaClient.refreshToken.create({
       data: {

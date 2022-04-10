@@ -6,7 +6,6 @@ import loginHandler from "./LoginHandler";
 interface ICreate {
   username: string;
   password: string;
-  userData?: any;
 }
 
 export default async function createUser({ username, password }: ICreate) {
