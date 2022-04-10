@@ -17,6 +17,10 @@ export default function LoginModalComponent({ onClose }: IType) {
 
       <I.TitleInput placeholder="Jhon Doe" />
 
+      <T.InputTitle>your password</T.InputTitle>
+
+      <I.TitleInput placeholder="Password" />
+
       <I.CreateButton size="medium" onClick={() => onClose()}>
         ENTER
       </I.CreateButton>

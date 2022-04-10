@@ -4,17 +4,17 @@ import prismaClient from "../../prisma";
 import loginHandler from "./LoginHandler";
 
 interface ICreate {
-  email: string;
+  username: string;
   password: string;
   userData?: any;
 }
 
-export default async function createUser({ email, password }: ICreate) {
+export default async function createUser({ username, password }: ICreate) {
   const passHash = await hash(password, 8);
 
   const userData = await prismaClient.user.create({
     data: {
-      email,
+      username,
       password: passHash,
     },
   });

@@ -5,18 +5,18 @@ import createUser from "../utils/LoginUtils/CreateUserHandler";
 import loginHandler from "../utils/LoginUtils/LoginHandler";
 
 interface IExecute {
-  email: string;
+  username: string;
   password: string;
 }
 
 export default class LoginService {
-  async execute({ email, password }: IExecute) {
+  async execute({ username, password }: IExecute) {
     const userData = await prismaClient.user.findFirst({
-      where: { email },
+      where: { username },
     });
 
     if (!userData) {
-      return await createUser({ email, password });
+      return await createUser({ username, password });
     } else {
       return await loginHandler({ password, userData });
     }
