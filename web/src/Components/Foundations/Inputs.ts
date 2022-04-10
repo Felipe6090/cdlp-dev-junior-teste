@@ -4,6 +4,7 @@ type StyledProps = {
   size?: string;
   margin?: string;
   marginLeft?: string;
+  authorized?: boolean;
 };
 
 export const LoginButton = styled.button`
@@ -99,7 +100,8 @@ export const CreateButton = styled.button`
       ? "29px"
       : ""};
 
-  background-color: #000;
+  background-color: ${(props: StyledProps) =>
+    props.authorized ? "#000" : "#777"};
 
   border: none;
   outline: none;

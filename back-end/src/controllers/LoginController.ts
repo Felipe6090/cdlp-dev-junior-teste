@@ -3,11 +3,11 @@ import LoginHandler from "../services/LoginService";
 
 export default class LoginController {
   async login(req: Request, res: Response) {
-    const { email, password } = req.body;
+    const { username, password } = req.body;
 
     const service = new LoginHandler();
 
-    const user = await service.execute({ email, password });
+    const user = await service.execute({ username, password });
 
     return res.json(user);
   }

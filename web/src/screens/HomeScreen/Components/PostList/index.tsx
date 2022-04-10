@@ -1,6 +1,6 @@
 import Image from "next/image";
 
-import { useState } from "react";
+import { useContext, useState } from "react";
 
 import DeleteAlertModal from "../../../../Components/Modals/DeleteAlertModal";
 import EditModal from "../../../../Components/Modals/EditModal";
@@ -8,53 +8,68 @@ import EditModal from "../../../../Components/Modals/EditModal";
 import * as S from "./styles";
 import * as T from "../../../../Components/Foundations/Typograph";
 
+import { PostsListContext } from "../../../../contexts/PostsListContext";
+import { AuthContext } from "../../../../contexts/AuthContext";
+
 export default function PostList() {
+  const { postsListData } = useContext(PostsListContext);
+
+  const { authData } = useContext(AuthContext);
+
   const [deleteModalHandler, setDeleteModalHandler] = useState(false);
+
   const [editModalHandler, setEditModalHandler] = useState(false);
+
+  function helper(a: any, b: any) {
+    return b.created_datetime - a.created_datetime;
+  }
 
   return (
     <S.MainDiv>
-      <S.PostDiv>
-        <S.PostHead>
-          <T.DefaultBoldWhiteFont>AXD</T.DefaultBoldWhiteFont>
+      {postsListData.sort(helper).map((post) => {
+        return (
+          <S.PostDiv key={post.id}>
+            <S.PostHead>
+              <T.DefaultBoldWhiteFont>{post.title}</T.DefaultBoldWhiteFont>
 
-          <S.IconsDiv>
-            <Image
-              src="/deleteIcon.png"
-              layout="fixed"
-              height={22.5}
-              width={17.5}
-              onClick={() => setDeleteModalHandler(!deleteModalHandler)}
-              style={{ cursor: "pointer" }}
-            />
+              {post.userId === authData?.id ||
+                (post.username === authData?.username && (
+                  <S.IconsDiv>
+                    <Image
+                      src="/deleteIcon.png"
+                      layout="fixed"
+                      height={22.5}
+                      width={17.5}
+                      onClick={() => setDeleteModalHandler(!deleteModalHandler)}
+                      style={{ cursor: "pointer" }}
+                    />
 
-            <Image
-              src="/editIcon.png"
-              layout="fixed"
-              height={30}
-              width={30}
-              onClick={() => setEditModalHandler(!editModalHandler)}
-              style={{ cursor: "pointer" }}
-            />
-          </S.IconsDiv>
-        </S.PostHead>
+                    <Image
+                      src="/editIcon.png"
+                      layout="fixed"
+                      height={30}
+                      width={30}
+                      onClick={() => setEditModalHandler(!editModalHandler)}
+                      style={{ cursor: "pointer" }}
+                    />
+                  </S.IconsDiv>
+                ))}
+            </S.PostHead>
 
-        <S.PostInfosRow>
-          <T.DefaultNameTypography>@jj</T.DefaultNameTypography>
+            <S.PostInfosRow>
+              <T.DefaultNameTypography>
+                @{post.username}
+              </T.DefaultNameTypography>
 
-          <T.TimeStamp>25 minutes ago</T.TimeStamp>
-        </S.PostInfosRow>
+              <T.TimeStamp>
+                {post.created_datetime + " minutes ago"}
+              </T.TimeStamp>
+            </S.PostInfosRow>
 
-        <T.PostTextTypograph>
-          Curabitur suscipit suscipit tellus. Phasellus consectetuer vestibulum
-          elit. Pellentesque habitant morbi tristique senectus et netus et
-          malesuada fames ac turpis egestas. Maecenas egestas arcu quis ligula
-          mattis placerat. Duis vel nibh at velit scelerisque suscipit. Duis
-          lobortis massa imperdiet quam. Aenean posuere, tortor sed cursus
-          feugiat, nunc augue blandit nunc, eu sollicitudin urna dolor sagittis
-          lacus. Fusce a quam. Nullam vel sem. Nullam cursus lacinia erat.
-        </T.PostTextTypograph>
-      </S.PostDiv>
+            <T.PostTextTypograph>{post.content}</T.PostTextTypograph>
+          </S.PostDiv>
+        );
+      })}
 
       <EditModal
         isOpen={editModalHandler}

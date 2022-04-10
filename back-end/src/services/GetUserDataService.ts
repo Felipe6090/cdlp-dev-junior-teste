@@ -2,15 +2,9 @@ import dayjs from "dayjs";
 import prismaClient from "../prisma";
 
 export default class GetUserDataService {
-  async execute(tokenId: string) {
-    const userData = await prismaClient.user.findFirst({
-      where: {
-        refreshToken: { id: tokenId },
-      },
-    });
-
+  async execute(id: string) {
     const token = await prismaClient.refreshToken.findFirst({
-      where: { id: tokenId },
+      where: { id },
     });
 
     if (!token) {
@@ -22,6 +16,12 @@ export default class GetUserDataService {
     if (expiresIn) {
       throw new Error("Not Authorized");
     }
+
+    const userData = await prismaClient.user.findFirst({
+      where: {
+        refreshToken: { id },
+      },
+    });
 
     return userData;
   }

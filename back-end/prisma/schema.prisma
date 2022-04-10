@@ -8,13 +8,13 @@ datasource db {
 }
 
 model User {
-  id               String   @id @default(uuid())
-  created_datetime DateTime @default(now())
+  id               String        @id @default(uuid())
+  created_datetime DateTime      @default(now())
   username         String
   password         String
   posts            Posts[]
+  refreshToken     RefreshToken?
 
-  RefreshToken RefreshToken[]
   @@map("users")
 }
 
