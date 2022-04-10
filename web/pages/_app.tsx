@@ -26,13 +26,7 @@ class MyApp extends App<Props> {
   static async getInitialProps({ Component, ctx }: AppContext) {
     const postsResponse = await InitialApi.get("/getPosts");
 
-    const postsResult = postsResponse.data;
-
-    function orderByDate(a: any, b: any) {
-      return b.created_datetime - a.created_datetime;
-    }
-
-    const postsData = postsResult.sort(orderByDate);
+    const postsData = postsResponse.data;
 
     const { auth_token: tokenId } = nookies.get(ctx);
 
