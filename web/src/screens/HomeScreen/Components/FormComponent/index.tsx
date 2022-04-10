@@ -31,9 +31,17 @@ export default function FormComponent() {
       username: authData.username,
     });
 
+    function orderByDate(a: any, b: any) {
+      return b.created_datetime - a.created_datetime;
+    }
+
     const result = response.data;
 
-    return setPostsListData([result, ...postsListData]);
+    const resArray = [result, ...postsListData];
+
+    resArray.sort(orderByDate);
+
+    return setPostsListData(resArray);
   }
 
   return (

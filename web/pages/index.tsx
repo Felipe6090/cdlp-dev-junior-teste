@@ -22,8 +22,6 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
 
   const userData = userDataHandler.data;
 
-  console.log(userData);
-
   return {
     props: { userData },
   };
@@ -35,7 +33,6 @@ const Home: NextPage = ({
   const { setAuthData } = useContext(AuthContext);
 
   useEffect(() => {
-    console.log(userData);
     setAuthData(userData);
   }, [userData]);
 
