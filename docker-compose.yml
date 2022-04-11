@@ -8,7 +8,7 @@ services:
     image: felipe6090/cdlp-web
     ports:
       - "3000:3000"
-    command: sh -c '../wait-for.sh cdlp-back-end:4000 -- echo "succes back-end process"'
+    command: sh -c '../wait-for cdlp-back-end:4000 -- echo "succes back-end process"'
     depends_on:
       - "back-end"
     container_name: cdlp-web
@@ -22,7 +22,7 @@ services:
     image: felipe6090/cdlp-back-end
     ports:
       - "4000:4000"
-    command: sh -c '../wait-for.sh cdlp-mysql:4000 -- echo "succes back-end process"'
+    command: sh -c '../wait-for cdlp-mysql:4000 -- echo "succes back-end process"'
     depends_on:
       - "mysql"
     container_name: cdlp-back-end
