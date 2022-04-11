@@ -1,13 +1,8 @@
 import { Request, Response } from "express";
+
 import CreatePostService from "../services/CreatePostService";
 
-type IPost = {
-  id: string;
-  username: string;
-  userId: string;
-  title: string;
-  content: string;
-};
+import { IPost } from "../types/IPost";
 
 export default class CreatePostController {
   async handle(req: Request, res: Response) {

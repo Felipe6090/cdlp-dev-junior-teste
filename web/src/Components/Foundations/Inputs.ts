@@ -8,7 +8,7 @@ type StyledProps = {
 };
 
 export const LoginButton = styled.button`
-  width: ${(props: StyledProps) =>
+  min-width: ${(props: StyledProps) =>
     props.size == "large"
       ? "289px"
       : props.size == "medium"
@@ -78,7 +78,7 @@ export const LoginButton = styled.button`
 `;
 
 export const BlackButton = styled.button`
-  width: ${(props: StyledProps) =>
+  min-width: ${(props: StyledProps) =>
     props.size == "large"
       ? "289px"
       : props.size == "medium"

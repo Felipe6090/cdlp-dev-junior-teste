@@ -1,13 +1,7 @@
 import prismaClient from "../prisma";
 
 import { api } from "../thirdPartyApi";
-
-type IPost = {
-  username: string;
-  userId: string;
-  title: string;
-  content: string;
-};
+import { IPost } from "../types/IPost";
 
 type IAPI = {
   username: string;

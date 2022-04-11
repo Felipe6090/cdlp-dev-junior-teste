@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import { devices } from "../../../../Devices";
 
 export const MainDiv = styled.div`
   display: flex;

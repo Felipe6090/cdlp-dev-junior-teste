@@ -41,7 +41,9 @@ export default function FormComponent() {
 
     resArray.sort(orderByDate);
 
-    return setPostsListData(resArray);
+    setPostsListData(resArray);
+
+    return router.replace("/");
   }
 
   return (

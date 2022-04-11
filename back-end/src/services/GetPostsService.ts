@@ -2,13 +2,7 @@ import prismaClient from "../prisma";
 
 import { api } from "../thirdPartyApi";
 
-type IPosts = {
-  id: string;
-  username: string;
-  created_datetime: string;
-  title: string;
-  content: string;
-};
+import { IPost } from "../types/IPost";
 
 export default class GetPostsService {
   async execute() {
@@ -18,7 +12,7 @@ export default class GetPostsService {
 
     const thirdsAPIData = thirdsAPIResponse.data;
 
-    const thirdsAPIPosts: IPosts[] = thirdsAPIData.results;
+    const thirdsAPIPosts: IPost[] = thirdsAPIData.results;
 
     const result = [...allLocalDBPosts, ...thirdsAPIPosts];
 

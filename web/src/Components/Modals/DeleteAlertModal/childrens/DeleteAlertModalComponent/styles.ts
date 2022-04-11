@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import { devices } from "../../../../Devices";
 
 export const MainDiv = styled.div`
   display: flex;
@@ -11,6 +12,12 @@ export const MainDiv = styled.div`
   border: 1px solid #000;
 
   width: 50vw;
+
+  ${devices.tablet} {
+    width: 80vw;
+
+    align-items: center;
+  }
 `;
 
 export const ButtonsDiv = styled.div`
@@ -18,4 +25,12 @@ export const ButtonsDiv = styled.div`
 
   margin-left: auto;
   gap: 25px;
+
+  ${devices.tablet} {
+    margin-left: 0;
+  }
+
+  ${devices.mobileL} {
+    flex-direction: column;
+  }
 `;
